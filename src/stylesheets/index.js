@@ -1,0 +1,1 @@
+import './layot/layot.scss'
