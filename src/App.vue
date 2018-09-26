@@ -1,12 +1,16 @@
 <template lang='pug'>
   #app
     .header
-      appHeader
+      app-header
     .tabs
+      app-tabs
     .content
+      router-view
 </template>
 
 <script>
+import appHeader from './components/header'
+import appTabs from './components/tabs'
 export default {
   name: 'app',
   data () {
@@ -15,7 +19,8 @@ export default {
     }
   },
   components: {
-    appHeader: require('./components/header')
+    appHeader,
+    appTabs
   }
 }
 </script>

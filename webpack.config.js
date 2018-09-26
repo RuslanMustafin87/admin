@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: '[name].build.js'
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
@@ -25,7 +25,16 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                './src/stylesheets/veriables.scss',
+                './src/stylesheets/mixins.scss'
+              ]
+            }
+          }
         ],
       },
       {
@@ -47,7 +56,16 @@ module.exports = {
             'scss': [
               'vue-style-loader',
               'css-loader',
-              'sass-loader'
+              'sass-loader',
+              {
+                loader: 'sass-resources-loader',
+                options: {
+                  resources: [
+                    './src/stylesheets/veriables.scss',
+                    './src/stylesheets/mixins.scss'
+                  ]
+                }
+              }
             ],
             'sass': [
               'vue-style-loader',
@@ -65,6 +83,13 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
+      },
+      {
+        test: /\.(woff2|woff)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'

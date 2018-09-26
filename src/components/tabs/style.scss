@@ -1,0 +1,20 @@
+.tabs{
+    background-color: $beige;
+}
+
+.list {
+    display: inline-flex;
+}
+
+.item{
+    padding: 25px 70px;
+    display: block;
+    border-right: 2px solid #fff;
+}
+
+.link{
+    font: bold 16px 'Roboto';
+    text-transform: uppercase;
+    color: $main_color;
+    text-decoration: none;
+}

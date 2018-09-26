@@ -1,7 +1,7 @@
 <template lang="pug">
     header
         .title Панель администрирования
-        a(href='').logout Вернутся на сайт
+        a(href='#').logout Вернутся на сайт
 </template>
 
 <script>
@@ -10,7 +10,5 @@ export default {
 }
 </script>
 
-<style lang="scss" src='./style.scss' scoped>
-
-</style>
+<style lang="scss" src='./style.scss' scoped></style>
 
