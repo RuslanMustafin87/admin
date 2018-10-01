@@ -5,6 +5,7 @@
     .tabs
       app-tabs
     .content
+      .content__bg
       router-view
 </template>
 
@@ -26,5 +27,18 @@ export default {
 </script>
 
 <style lang="scss">
-  
+#app{
+  display:flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+  .content{
+    flex:1;
+    background: url('~img/bg.jpg') center no-repeat;
+    background-size: cover;
+    // filter: opacity(30%);
+  }
+  .content__bg{
+    // min-height: 100%;
+  }
 </style>
