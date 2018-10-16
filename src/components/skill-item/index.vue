@@ -1,13 +1,17 @@
 <template lang="pug">
     tr
-                    td Html
+                    td {{skill.name}}
                     td 
-                        input(type='text')
+                        input(type='text'
+                            :value='skill.percents'    
+                        )
                     td %
 </template>
 
 <script>
 export default {
-    
+    props:{
+        skill: Object
+    }
 }
 </script>
