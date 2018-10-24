@@ -7,12 +7,16 @@
                 :skillTitle='skillType'
                 :key='index'
                 @addSkill='addSkill'
+                @removeSkill='removeSkill'
             )
             br
+        button(type='button'
+            @click='addPercent'
+        ) Сохранить
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex';
+import {mapGetters, mapActions, mapMutations} from 'vuex';
 
 import skillsList from '../skills-list/index.vue';
 
@@ -27,8 +31,15 @@ export default {
     },
     methods: {
         ...mapActions(['fetchSkills']),
+        ...mapMutations(['addNewSkill','removeSaveSkill','addNewPercent']),
         addSkill(skill){
-            console.log(skill)
+            this.addNewSkill(skill);
+        },
+        removeSkill(id){
+            this.removeSaveSkill(id)
+        },
+        addPercent(){
+            this.addNewPercent()
         }
     },
     created() {

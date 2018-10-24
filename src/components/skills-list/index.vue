@@ -7,22 +7,37 @@
                         :key='index'
                         v-if='checkSkillType(skillTitle) === skill.type'
                         :skill='skill'
+                        @removeSkill='removeSkill'
                 )
             .buttons
-                button(@click='addSkill(skillTitle)') Добавить
+                button(
+                    @click='addSkill(skillTitle)' 
+                    :disabled="validation.hasError('newSkill')"
+                    ) Добавить
                 input(
                     type='text'
                     v-model='newSkill'
+                    :class="{error: validation.hasError('newSkill')}"
                 )
+                div {{validation.firstError('newSkill')}}
 </template>
 
 
 <script>
-import skillItem from '../skill-item/index.vue'
+import skillItem from '../skill-item/index.vue';
+import SimpleVueValidator from 'simple-vue-validator';
+import {Validator} from 'simple-vue-validator';
+
 export default {
+    mixins: [SimpleVueValidator.mixin],
     data(){
         return {
-            newSkill:''
+            newSkill: ''
+        }
+    },
+    validators: {
+        'newSkill'(value){
+            return Validator.value(value).required('Поле не может быть пустым');
         }
     },
     props: {
@@ -41,13 +56,28 @@ export default {
             }
         },
         addSkill(skillType){
-            this.$emit('addSkill',{
+            this.$validate().then(success=>{
+                if (!success) return
+
+                this.$emit('addSkill',{
                 id: Math.round(Math.random() * 10000 ),
                 name: this.newSkill,
                 percents: 0,
                 type: this.checkSkillType(skillType)
+                });
+            
+                this.validation.reset()
+                this.newSkill = '';
             })
+        },
+        removeSkill(id){
+            this.$emit('removeSkill',id)
         }
     }
 }
 </script>
+<style lang="scss" scoped>
+    .error {
+        border: 1px solid red;
+    }
+</style>
