@@ -8,9 +8,11 @@
                 :key='index'
                 @addSkill='addSkill'
                 @removeSkill='removeSkill'
+                @changePercent='changePercent'
             )
             br
-        button(type='button'
+        button(
+            type='button'
             @click='addPercent'
         ) Сохранить
 </template>
@@ -39,7 +41,10 @@ export default {
             this.removeSaveSkill(id)
         },
         addPercent(){
-            this.addNewPercent()
+            console.log(this.skills)
+        },
+        changePercent(percent,id){
+            this.addNewPercent(percent)
         }
     },
     created() {

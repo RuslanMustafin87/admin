@@ -8,6 +8,7 @@
                         v-if='checkSkillType(skillTitle) === skill.type'
                         :skill='skill'
                         @removeSkill='removeSkill'
+                        @changePercent='changePercent'
                 )
             .buttons
                 button(
@@ -72,6 +73,9 @@ export default {
         },
         removeSkill(id){
             this.$emit('removeSkill',id)
+        },
+        changePercent(percent,id){
+            this.$emit('changePercent',percent,id)
         }
     }
 }
@@ -81,3 +85,4 @@ export default {
         border: 1px solid red;
     }
 </style>
+// @percentChange='percentChange'

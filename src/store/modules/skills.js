@@ -1,6 +1,6 @@
 const skills = {
     state: {
-        data: []
+        data: [],
     },
     getters: {
         skills(state){
@@ -14,8 +14,13 @@ const skills = {
         removeSaveSkill(state, id){
             state.data = state.data.filter(skill => skill.id !== id);
         },
-        addNewPercent(state,percent){
-            state.data.skill.percent = percent
+        addNewPercent(state,percent,id){
+            state.data.filter(skill=>{
+                if (skill.id === id){
+                    skill.percents = +percent;
+                    console.log(skill)
+                }
+            }) 
         }
     },
     actions:{
@@ -26,7 +31,8 @@ const skills = {
             }, error=>{
                 console.error(error)
             });   
-        }
+        },
+        
     }
 }
 

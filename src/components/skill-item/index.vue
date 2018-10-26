@@ -4,6 +4,7 @@
                     td 
                         input(type='text'
                             v-model='percent'
+                            @change='changePercent'
                         )
                     td %
                     button(type='type' @click='removeSkill(skill.id)') Удалить
@@ -22,6 +23,9 @@ export default {
     methods:{
         removeSkill(id){
             this.$emit('removeSkill',id)
+        },
+        changePercent(){
+            this.$emit('changePercent', this.percent, this.skill.id)
         }
     }
 }
