@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -56,6 +56,7 @@ module.exports = {
             'scss': [
               'vue-style-loader',
               'css-loader',
+              'svg-transform-loader',
               'sass-loader',
               {
                 loader: 'sass-resources-loader',
@@ -70,6 +71,7 @@ module.exports = {
             'sass': [
               'vue-style-loader',
               'css-loader',
+              'svg-transform-loader',
               'sass-loader?indentedSyntax'
             ]
           }
@@ -82,11 +84,23 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]?[hash]'
+          }
+          },
+          'svg-transform-loader'
+        ]
       },
       {
         test: /\.(woff2|woff)$/,

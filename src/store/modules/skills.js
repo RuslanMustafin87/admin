@@ -14,9 +14,9 @@ const skills = {
         removeSaveSkill(state, id){
             state.data = state.data.filter(skill => skill.id !== id);
         },
-        addNewPercent(state,percent){
-            state.data.skill.percent = percent
-        }
+        // addNewPercent(state,percent){
+        //     if ()
+        // }
     },
     actions:{
         fetchSkills({state, rootGetters}){
