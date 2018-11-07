@@ -21,6 +21,7 @@
                     :class="{error: validation.hasError('newSkill')}"
                 )
                 div {{validation.firstError('newSkill')}}
+                svg(class='phone')
 </template>
 
 
@@ -83,5 +84,17 @@ export default {
 <style lang="scss" scoped>
     .error {
         border: 1px solid red;
+    }
+    .phone {
+        width: 50px;
+        height: 50px;
+        @include fill-background-image('phone.svg', '#000');
+        background-repeat: no-repeat;
+        &:hover {
+            width: 50px;
+            height: 50px;
+            @include fill-background-image('phone.svg', '#ED2939');
+            background-repeat: no-repeat;
+        }
     }
 </style>
