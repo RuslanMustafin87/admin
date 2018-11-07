@@ -89,6 +89,13 @@ module.exports = {
         }
       },
       {
+        test: /\.svg$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
+      },
+      {
         test: /\.(woff2|woff)$/,
         loader: 'file-loader',
         options: {
