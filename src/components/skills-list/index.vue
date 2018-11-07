@@ -84,7 +84,7 @@ export default {
 <style lang="scss" scoped>
     .error {
         border: 1px solid red;
-    }
+    } 
     .phone {
         width: 50px;
         height: 50px;
